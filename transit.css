@@ -23,6 +23,7 @@ h1 {
 .transit-container {
     position: absolute;
     width: 100%;
+    height: 24em;
 }
 .blur-box {
     position: absolute;
@@ -35,6 +36,7 @@ h1 {
     background-size: 3000px auto;
     -webkit-filter: blur(3px);
     filter: blur(3px);
+    height: 100%;
 }
 .transit-box {
     position: relative;
@@ -42,6 +44,7 @@ h1 {
     background: rgb(34,34,34);
     background: rgba(34,34,34,0.2);
     padding: 10px;
+    height: 100%;
 }
 .transit-footer {
     padding-top: 20em;
