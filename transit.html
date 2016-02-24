@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>IsMyBusLate.Com</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+
+    <link href="https://fonts.googleapis.com/css?family=Chango" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Signika:400,700"
+          rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+          crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+          rel="stylesheet">
+    <link href="transit.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">IsMyBusLate?</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse"
+                    data-target="#navbar-main">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a>Blog</a></li>
+                <li><a>Careers</a></li>
+                <li><a>About</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="transit-container">
+                  <div class="blur-box"></div>
+                  <div class="transit-box">
+                      <h2>Transit Status Lookup</h2>
+                      <form width="100%">
+                          <div id="city"></div>
+                          <div id="route"></div>
+                          <div id="late"></div>
+                      </form>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 100px;">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="transit-footer">
+                <h5><i class="fa fa-copyright"></i> 2016 IsMyBusLate.Com, All
+                    Rights Reserved. Idea by <a href="https://twitter.com/CMcCurdyPDX/status/701802118391341056">@CMcCurdyPDX.</a></h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<script src="transit.js"></script>
+<script id="system-selector" type="text/x-handlebars-template">
+<div class="form-group">
+  <select class="form-control" id="citysel" onchange="pick_city();">
+  <option value="" disabled selected style="display:none;">Transit System</option>
+{{#each cities}}
+    <option value="{{id}}">{{name}}</option>
+{{/each}}
+  </select>
+</div>
+</script>
+<script id="route-selector" type="text/x-handlebars-template">
+<div class="form-group">
+  <select class="form-control" id="routesel" onchange="detailed_status();">
+{{#each routes}}
+    <option value="" disabled selected style="display:none;">Bus/Subway Route</option>
+    <option value="{{id}}">{{name}}</option>
+{{/each}}
+  </select>
+</div>
+</script>
+<script id="status" type="text/x-handlebars-template">
+    <h2>IsMyBusLate?</h2>
+    <h6>Last Updated: {{stamp}}</h6>
+    <p>{{shrug}}</p>
+    <p><a onclick="build_city_picker();">Clear Selections</a></p>
+</script>
+
+
+</body>
+</html>
